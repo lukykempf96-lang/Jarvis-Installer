@@ -1,0 +1,63 @@
+JARVIS PER LINK INSTALLIEREN – SO RICHTEST DU DEN LINK EIN
+Erstellt am 06.10.2026 aus Jarvis Version 21.
+
+Der Link ist schon eingetragen.
+
+IN DIESEM ORDNER
+  jarvis-install.sh        das Startskript (liegt hinter dem Link)
+  jarvis-paket.tar.gz      das Programm mit allen eigenen Funktionen (0,2 MB),
+                           ohne Schlüssel und ohne persönliche Daten
+Beide Dateien gehören zusammen: Das Skript installiert nur genau dieses Paket
+(es prüft die Prüfsumme). Nach jedem neuen Bau beide neu hochladen.
+
+DER EINZEILER (im Terminal einfügen und Enter drücken)
+
+    curl -fsSL https://raw.githubusercontent.com/lukykempf96-lang/Jarvis-Installer/main/jarvis-install.sh | bash
+
+WAS DAS SKRIPT MACHT
+  1. Apple-Befehlszeilentools prüfen oder installieren
+  2. Homebrew und Python 3.12 prüfen oder (nach Rückfrage) installieren, Chrome anbieten
+  3. Das Paket laden und die Prüfsumme kontrollieren
+  4. Jarvis nach ~/Downloads/Jarvis legen (gibt es ihn schon: auf Wunsch aktualisieren,
+     Schlüssel und Daten bleiben)
+  5. Anthropic-Schlüssel abfragen und prüfen, ElevenLabs freiwillig, Name, Stadt;
+     gespeichert in ~/Downloads/Jarvis/.env, nur für dich lesbar
+  6. Alle Programmteile installieren und die eigenen Funktionen prüfen
+  7. Berechtigungen erklären und Jarvis starten
+
+WO HOCHLADEN – EMPFOHLEN: GITHUB
+  Wichtig zu wissen: Ein Einzeiler mit curl funktioniert nur, wenn die Dateien
+  ohne Anmeldung erreichbar sind. Bei einem PRIVATEN GitHub-Repository bräuchte
+  der Befehl einen Zugangsschlüssel (Token), und der gehört in keinen Einzeiler.
+  Darum: ein öffentliches Repository. Das ist unbedenklich, weil das Paket weder
+  Schlüssel noch persönliche Daten enthält. Sichtbar ist nur der Programmcode
+  (darin kommt dein Vorname vor, weil Jarvis dich so anspricht).
+
+  1. Auf github.com ein kostenloses Konto anlegen und anmelden.
+  2. Oben rechts „+“ -> „New repository“.
+     Name: jarvis-installer   ·   „Public“ auswählen   ·   „Create repository“.
+  3. Dein Link lautet dann:
+         https://raw.githubusercontent.com/DEINNAME/jarvis-installer/main
+     (DEINNAME = dein GitHub-Benutzername)
+  4. Jarvis sagen: „Bau den Online-Installer mit dem Link
+     https://raw.githubusercontent.com/DEINNAME/jarvis-installer/main“
+     Dann sind Link und Prüfsumme im Skript eingetragen.
+  5. Im Repository auf „uploading an existing file“ bzw. „Add file“ -> „Upload files“,
+     die beiden Dateien jarvis-install.sh und jarvis-paket.tar.gz hineinziehen,
+     unten „Commit changes“.
+  6. Fertig. Der Einzeiler lautet:
+         curl -fsSL https://raw.githubusercontent.com/DEINNAME/jarvis-installer/main/jarvis-install.sh | bash
+
+WENN ES PRIVAT BLEIBEN SOLL: DROPBOX
+  1. Beide Dateien in Dropbox hochladen.
+  2. Für jede Datei „Teilen“ -> „Link kopieren“. Am Ende des Links „dl=0“ durch „dl=1“ ersetzen.
+  3. Jarvis sagen: „Bau den Online-Installer mit dem Paket-Link <Link zu jarvis-paket.tar.gz>“.
+  4. Das neue jarvis-install.sh in Dropbox ersetzen (gleicher Link bleibt).
+  5. Einzeiler:   curl -fsSL "<Link zu jarvis-install.sh mit dl=1>" | bash
+  Wer den Link kennt, kann das Paket laden. Den Link also nur gezielt weitergeben.
+
+SICHERHEIT
+  - Im Skript und im Paket stehen keine Schlüssel und keine persönlichen Daten
+    (Jarvis prüft das vor dem Speichern).
+  - Das Skript lädt nur das Paket mit der eingetragenen Prüfsumme.
+  - „curl … | bash“ führt das Skript sofort aus. Nur Links benutzen, die du selbst angelegt hast.
